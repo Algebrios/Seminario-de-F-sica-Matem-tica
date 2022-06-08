@@ -48,8 +48,8 @@ jobs:
 
       - name: Commit files # commit the output folder
         run: |
-          git config --local user.email "test@github.com"
-          git config --local user.name "GitHub Action test"
+          git config --local user.email "pdf_uploader@github.com"
+          git config --local user.name "GitHub PDF Uploader"
           git add ./PDFs
           git commit -m "Compiled PDF"
   
