@@ -1,3 +1,40 @@
-\begin{chapter}{Topología de $R^n$ (Sección I)}
-En esta sección se estudian conceptos relacionados con la topología de $R^n$, con particular énfasis en la definición de abiertos, vecindades, ...
+\begin{chapter}{Topología de $\mathbb{R}^n$ (Sección I)}
+En esta sección se estudian conceptos relacionados con la topología de $\mathbb{R}^n$, con particular énfasis en la definición de abiertos, vecindades, ...
+\begin{section}{Compacidad}
+\begin{defn}
+Sea $X$ un E.T. Se dice que $X$ es compacto, si dado un cubrimiento de abiertos de $X$, i.e. una colección $\{\mathcal{U}_\alpha\}$ de abiertos de $X$ t.q. $X\subseteq\bigcup\mathcal{U}_\alpha$, existe un subcubrimiento finito que también cubre a $X$, i.e. una subcolección $\{\mathcal{U}_{\alpha(i)}\}_{i=1}^n\subseteq\{\mathcal{U}_\alpha\}$ t.q. $X\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$. Adicionalmente, si $Y\subseteq X$, se dice que $Y$ es compacto si es compacto con la topología relativa.
+\end{defn}
+
+\begin{rem}
+Nótese que si una colección $\{\mathcal{U}_\alpha\}$ de conjuntos de $X$, recubre a $X$, i.e. que $X\subseteq\bigcup\mathcal{U}_\alpha$, entonces $X=\bigcup\mathcal{U}_\alpha$. Luego, en la definición anterior es indiferente decir si el recubrimiento de abiertos contiene al conjunto o es igual a éste. 
+\end{rem}
+
+\begin{them}
+Sea $X$ un E.T. compacto y $Y\subseteq X$ cerrado, entonces $Y$ es compacto. 
+\end{them}
+
+\begin{proof}
+Sea $\{\mathcal{U}_\alpha\}$ un cubrimiento de abiertos para $Y$. Como $Y$ es cerrado en $X$, por definición $Y^C=X-Y$ es abierto en $X$. Nótese que si $Y^C=\emptyset$, entonces $Y=X$ y trivialmente sería compacto, así que supóngase $Y^C\neq\emptyset$. Nótese que:
+\begin{equation*} \label{eq1}
+\begin{split}
+X & = Y^C\cup Y \\
+ & = Y^C\cup\bigcup\mathcal{U}_\alpha \\
+ & = Y^C\cup\bigcup\underbrace{(Y\cap\mathcal{V}_\alpha)}_{\text{abiertos de $Y$}} \\
+ & = Y^C\cup \left(Y\cap\bigcup\mathcal{V}_\alpha\right) \\
+ & = (Y^C\cup Y)\cap \left(Y^C\cup\bigcup\mathcal{V}_\alpha\right) \\
+ & = X\cup\left(Y^C\cup\bigcup\mathcal{V}_\alpha\right),
+\end{split}
+\end{equation*}
+y nótese que el conjunto resultante en la igualdad de la última linea, es un abierto de $X$, i.e. que en particular $\{\mathcal{U}_\alpha\}\cup\{Y^C\}$ es un cubrimiento de abiertos de $X$, y por la compacidad de $X$ nótese que existe un conjunto finito $\{\mathcal{U}_1,\ldots,\mathcal{U}_n\}\subseteq\{\mathcal{U}_\alpha\}$ t.q. $X=\bigcup_{i=1}^n\mathcal{U}_i\cup Y^C$ (pues como $Y=\bigcup\mathcal{U}_\alpha$ y $Y^C\neq\emptyset$, hay que considerar este último conjunto en el cubrimiento por si existen elementos que no están en el otro), pero como $Y\subseteq X$, entonces $Y\subseteq\bigcup_{i=1}^n\mathcal{U}_i\cup Y^C$, i.e. que $Y\subseteq\bigcup_{i=1}^n\mathcal{U}_i$, mostrando que en efecto $Y$ es compacto.
+\end{proof}
+
+\begin{them}
+Sean $X$ y $Y$ E.T. Si $X$ es compacto y $f:X\to Y$ es una aplicación continua, entonces $f(X)$ es compacto.
+\end{them}
+
+\begin{proof}
+Considérese $\{\mathcal{U}_\alpha\}$ un cubrimiento de abiertos para $f(X)$, i.e. que $f(X)\subseteq\bigcup\mathcal{U}_\alpha$, y por propiedades conjuntistas se tiene que esto último es equivalente a decir que $X\subseteq f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}(\mathcal{U}_\alpha)$, pero como $f$ es continua, devuelve abiertos en abiertos, por tanto $\{f^{-1}(\mathcal{U}_\alpha)\}$ es un cubrimiento de abiertos para $X$, y por la compacidad de tal conjunto, existe un conjunto $\left\lbrace f^{-1}(\mathcal{U}_{\alpha(i)}):i=1,\ldots,n\right\rbrace\subseteq\left\lbrace\mathcal{U}_\alpha\right\rbrace$ t.q. $X\subseteq\bigcup_{i=1}^nf^{-1}\left(\mathcal{U}_{\alpha(i)}\right)=f^{-1}\left(\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}\right)$, y esto último es equivalente a que $f(X)\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$.
+\end{proof}
+
+\end{section}
 \end{chapter}
