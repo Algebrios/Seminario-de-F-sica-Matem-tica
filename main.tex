@@ -18,6 +18,7 @@
 % basicamente todo lo necesario para escribir ecuaciones matemáticas segun las normas establecidas
 \usepackage{amsmath}
 
+
 % simbolos matematicos
 \usepackage{amssymb}
 
@@ -79,6 +80,11 @@
 \newcommand{\D}{\mathscr{D}}
 \newcommand{\M}{\mathscr{M}}
 
+\renewcommand{\qedsymbol}{$\blacksquare$}
+    \def\proof{\paragraph{Demostraci\'on:\\ }\normalfont}
+    \def\endproof{\hfill $\blacksquare$}
+
+
 % se elimina sangria francesa
 \setlength\parindent{0pt}
 
@@ -89,8 +95,8 @@
 \begin{document}
 \input{indice.tex}
 \input{notes/section_I}
-% \input{notes/section_II}
-% \input{exercises/exercises_I}
+\input{notes/section_II}
+\input{exercises/exercises_I}
 % \input{exercises/exercises_II}
 
 % Para mostrar la bibliografia
