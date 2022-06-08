@@ -41,4 +41,20 @@ jobs:
           root_file: main.tex
           latexmk_use_xelatex: true
 
+      - name: move to dir # Move the generated files into output folder
+        run: |
+          mkdir -p PDFs
+          yes| cp -rf *.pdf ./PDFs/
 
+      - name: Commit files # commit the output folder
+        run: |
+          git config --local user.email "test@github.com"
+          git config --local user.name "GitHub Action test"
+          git add ./PDFs
+          git commit -m "Compiled PDF"
+  
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
