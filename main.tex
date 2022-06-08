@@ -1,14 +1,99 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt,letterpaper,openany,oneside]{report}
 
-\title{Seminario de Fisica Matematica}
-\author{luis.papiernik }
-\date{June 2022}
+\usepackage[spanish]{babel}
+
+% Para hyperlinks
+\usepackage{hyperref}
+
+% para eliminar el warning ocacionado al agregar la bibliografia
+\usepackage{csquotes}
+
+% Xetex por defecto usa utf8
+% \usepackage[utf8]{inputenc}
+
+% para eliminar ligatures - Xetex engine
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={NoCommon, NoDiscretionary, NoHistoric, NoRequired, NoContextual}}
+
+% basicamente todo lo necesario para escribir ecuaciones matemáticas segun las normas establecidas
+\usepackage{amsmath}
+
+% simbolos matematicos
+\usepackage{amssymb}
+
+% theoremstyle
+\usepackage{amsthm}
+
+% Fuentes usadas para representar a las categorías
+\usepackage{mathrsfs}
+
+% Para la referenciacion inteligente
+\usepackage{cleveref}
+\crefname{chapter}{el Capitulo}{los Capítulos}
+\crefname{section}{la Sección}{las Secciones}
+\crefname{defn}{la Definición}{las Definiciones}
+\crefname{notn}{la Notación}{las Notaciones}
+\crefname{exmp}{el Ejemplo}{los Ejemplos}
+\crefname{rem}{la Observacion}{las Observaciones}
+\crefname{prop}{la Proposición}{las Proposiciones}
+\crefname{lema}{el Lema}{los Lemas}
+\crefname{them}{el Teorema}{los Teoremas}
+\crefname{coll}{el Corolario}{los Corolarios}
+\crefname{const}{la Construcción}{las Construcciones}
+
+\Crefname{chapter}{El Capitulo}{Los Capítulos}
+\Crefname{section}{La Sección}{Las Secciones}
+\Crefname{defn}{La Definición}{Las Definiciones}
+\Crefname{notn}{La Notación}{Las Notaciones}
+\Crefname{exmp}{El Ejemplo}{Los Ejemplos}
+\Crefname{rem}{La Observacion}{Las Observaciones}
+\Crefname{prop}{La Proposición}{Las Proposiciones}
+\Crefname{lema}{El Lema}{Los Lemas}
+\Crefname{them}{El Teorema}{Los Teoremas}
+\Crefname{coll}{El Corolario}{Los Corolarios}
+\Crefname{const}{La Construcción}{Las Construcciones}
+
+% contextos de matemáticas: teoremas, definiciones, lemas, ...
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{notn}[thm]{Notación}
+\newtheorem{exmp}[thm]{Ejemplo}
+\newtheorem{exmps}[thm]{Ejemplos}
+\newtheorem{rem}[thm]{Observacion}
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lema}[thm]{Lema}
+\newtheorem{them}[thm]{Teorema}
+\newtheorem{coll}[thm]{Corolario}
+\newtheorem{const}[thm]{Construcción}
+
+% abreviaciones para ahorrar escritura
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\CC}{\mathscr{C}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\M}{\mathscr{M}}
+
+% se elimina sangria francesa
+\setlength\parindent{0pt}
+
+% bibliografia
+\usepackage[backend=biber,style=alphabetic,sorting=nyt]{biblatex}
+\addbibresource{bibliography.bib}
 
 \begin{document}
+\input{indice.tex}
+\input{notes/section_I}
+% \input{notes/section_II}
+% \input{exercises/exercises_I}
+% \input{exercises/exercises_II}
 
-\maketitle
-
-\section{Sección I}
-
+% Para mostrar la bibliografia
+\nocite{*}
+\printbibliography
 \end{document}
