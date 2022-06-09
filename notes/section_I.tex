@@ -1,9 +1,34 @@
 \begin{chapter}{Topología de $\mathbb{R}^n$ (Sección I)}
 En esta sección se estudian conceptos relacionados con la topología de $\mathbb{R}^n$, con particular énfasis en la definición de abiertos, vecindades, ...
+
 \begin{section}{Compacidad}
 \begin{defn}
 Sea $X$ un E.T. Se dice que $X$ es compacto, si dado un cubrimiento de abiertos de $X$, i.e. una colección $\{\mathcal{U}_\alpha\}$ de abiertos de $X$ t.q. $X\subseteq\bigcup\mathcal{U}_\alpha$, existe un subcubrimiento finito que también cubre a $X$, i.e. una subcolección $\{\mathcal{U}_{\alpha(i)}\}_{i=1}^n\subseteq\{\mathcal{U}_\alpha\}$ t.q. $X\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$. Adicionalmente, si $Y\subseteq X$, se dice que $Y$ es compacto si es compacto con la topología relativa.
 \end{defn}
+
+La propiedad de ser compacto, a diferencia de ser abierto o cerrado, no depende de las características del espacio en donde estén sumergidos los conjuntos, i.e. que es una característica absoluta, no relativa, pues existen E.T. donde se pueden tener conjuntos $X\subseteq Y\subseteq Z$, t.q. $X$ sea abierto relativo en $Y$, sin serlo en $X$. Por ejemplo, considérese $Z=\R$ con la topología usual. Si $X=]0.5,1]$ y $Y=[0,1]$, nótese que $X=]0.5,2[\cap Y$, i.e. que $X$ es abierto relativo en $Y$, pero claramente no lo es en $Z$. Demuéstrese a continuación lo dicho:
+
+\begin{them}
+Supóngase que $X\subseteq Y\subseteq Z$. Se tiene que $X$ es compacto relativo en $Z$ syss $X$ es compacto relativo en $Y$.
+\end{them}
+
+\begin{proof}
+Sea $X$ compacto relativo en $Z$ y sea $\{\mathcal{U}_\alpha\}$ una colección de conjuntos abiertos relativos en $Y$ t.q. $X\subseteq\bigcup\mathcal{U}_\alpha=\bigcup\left(\mathcal{V}_\alpha\cap Y\right)$, donde para cada $\alpha$, $\mathcal{V}_\alpha$ es abierto de $Z$. En particular se tiene que $X\subseteq\mathcal{V}_{\alpha(1)}\cup\cdots\cup\mathcal{V}_{\alpha(n)}$, i.e. que $X=X \cap Y\subseteq(\mathcal{V}_{\alpha(1)}\cup\cdots\cup\mathcal{V}_{\alpha(n)})\cap Y=(\mathcal{V}_{\alpha(1)}\cap Y)\cup\cdots\cup(\mathcal{V}_{\alpha(n)}\cap Y)=\mathcal{U}_{\alpha(1)}\cup\cdots\cup\mathcal{U}_{\alpha(n)}$, i.e. que $X$ es compacto relativo en $Y$.
+
+Finalmente, si se supone $X$ compacto relativo en $Y$ y $\{\mathcal{V}_\alpha\}$ una colección de abiertos de $Z$ que cubre a $X$, defínase $\mathcal{U}_\alpha:=\mathcal{V}_\alpha\cap Y$, luego $X\subseteq\mathcal{U}_{\alpha(1)}\cup\cdots\cup\mathcal{U}_{\alpha(n)}$, pero como para toda $\alpha$, $\mathcal{U}_\alpha\subseteq\mathcal{V}_\alpha$, claramente $X\subseteq\mathcal{V}_{\alpha(1)}\cup\cdots\cup\mathcal{V}_{\alpha(n)}$, i.e. que $X$ es compacto relativo en $Z$.
+\end{proof}
+
+En virtud del teorema anterior se puede, en muchos casos, considerar conjuntos compactos como E.T. en sí mismos, sin prestar atención al espacio que los contiene. En particular, aunque tiene escaso sentido hablar de espacios abiertos o cerrados (pues todo E.T. es en sí mismo tanto abierto como cerrado), sí tiene sentido hablar de E.T. compactos. 
+
+\begin{exmp}
+Es claro que cualquier conjunto finito de un E.T. es compacto. 
+\end{exmp}
+
+\begin{exmp}
+Los intervalos cerrados de $\mathbb{R}$ son compactos.
+
+Supóngase el intervalo $[a,b]$ t.q. $a<b$, pues si $a=b$ el resultado es trivial. Considérese una colección de abiertos $\{\mathcal{U}_j\}_{j\in J}$ de $[a,b]$, que cubren tal intervalo, donde $\mathcal{U}_j=\mathcal{V}_j\cap[a,b]$, con $\mathcal{V}_j$ abierto de $\R$, para toda $j$. Defínase el conjunto: $$S:=\left\lbrace x\in[a,b]:[a,x]\subseteq\bigcup_{j\in I\subseteq J}\mathcal{U}_j\wedge|I|<\aleph_0\right\rbrace.$$ Es claro que $a\in S$, i.e. que $S\neq\emptyset$. Además, si $c\in S$, entonces $[a,c]\subseteq S$. Según lo anterior, por el principio del supremo, como también $S$ está acotado superiormente por $b$, existe $d=\sup(S)$.
+\end{exmp}
 
 \begin{rem}
 Nótese que si una colección $\{\mathcal{U}_\alpha\}$ de conjuntos de $X$, recubre a $X$, i.e. que $X\subseteq\bigcup\mathcal{U}_\alpha$, entonces $X=\bigcup\mathcal{U}_\alpha$. Luego, en la definición anterior es indiferente decir si el recubrimiento de abiertos contiene al conjunto o es igual a éste. 
@@ -33,7 +58,7 @@ Sean $X$ y $Y$ E.T. Si $X$ es compacto y $f:X\to Y$ es una aplicación continua,
 \end{them}
 
 \begin{proof}
-Si $\{\mathcal{U}_\alpha\}$ es un cubrimiento de abiertos para $f(X)$, entonces $f(X)\subseteq\bigcup\mathcal{U}_\alpha$, y por propiedades conjuntistas\footnote{Recordar de teoría de conjunto que dada la función $f:X\to Y$, la imagen directa de $A\subseteq X$ y la imagen inversa de $B\subseteq Y$ se definen respectivamente como:$$f(A):=\{y\in Y:\exists x\in A f(x)=y\}\text{ y }f^{-1}(B):=\{x\in X:f(x)\in B\}.$$ Además, $f(A)\subseteq B$ syss $A\subseteq f^{-1}(B)$. Finalmente, si $\{\mathcal{U}_\alpha\}\subseteq Y$, entonces $f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}\left(\mathcal{U}_\alpha\right)$.} se tiene que esto último es equivalente a decir que $X\subseteq f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}(\mathcal{U}_\alpha)$, pero como $f$ es continua, devuelve abiertos en abiertos, por tanto $\{f^{-1}(\mathcal{U}_\alpha)\}$ es un cubrimiento de abiertos para $X$, y por la compacidad de tal conjunto, existe un subconjunto $\left\lbrace f^{-1}(\mathcal{U}_{\alpha(i)}):i=1,\ldots,n\right\rbrace\subseteq\left\lbrace f^{-1}\left(\mathcal{U}_\alpha\right)\right\rbrace$ t.q. $X\subseteq\bigcup_{i=1}^nf^{-1}\left(\mathcal{U}_{\alpha(i)}\right)=f^{-1}\left(\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}\right)$, y esto último es equivalente a que $f(X)\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$.
+Si $\{\mathcal{U}_\alpha\}$ es un cubrimiento de abiertos para $f(X)$, entonces $f(X)\subseteq\bigcup\mathcal{U}_\alpha$, y por propiedades conjuntistas\footnote{Recordar de teoría de conjunto que dada la función $f:X\to Y$, la imagen directa de $A\subseteq X$ y la imagen inversa de $B\subseteq Y$ se definen respectivamente como:$$f(A):=\{y\in Y:\exists x\in A f(x)=y\}\text{ y }f^{-1}(B):=\{x\in X:f(x)\in B\}.$$ Además, $f(A)\subseteq B$ syss $A\subseteq f^{-1}(B)$. Finalmente, si para cada $\alpha$, $\mathcal{U}_\alpha\subseteq Y$, entonces $f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}\left(\mathcal{U}_\alpha\right)$.} se tiene que esto último es equivalente a decir que $X\subseteq f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}(\mathcal{U}_\alpha)$, pero como $f$ es continua, devuelve abiertos en abiertos, por tanto $\{f^{-1}(\mathcal{U}_\alpha)\}$ es un cubrimiento de abiertos para $X$, y por la compacidad de tal conjunto, existe un subconjunto $\left\lbrace f^{-1}(\mathcal{U}_{\alpha(i)}):i=1,\ldots,n\right\rbrace\subseteq\left\lbrace f^{-1}\left(\mathcal{U}_\alpha\right)\right\rbrace$ t.q. $X\subseteq\bigcup_{i=1}^nf^{-1}\left(\mathcal{U}_{\alpha(i)}\right)=f^{-1}\left(\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}\right)$, y esto último es equivalente a que $f(X)\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$.
 \end{proof}
 
 \begin{them}
@@ -48,7 +73,7 @@ Ver \cite[pp. 24, 25]{abraham}.
 
 \begin{section}{Conexidad}
 
-El concepto de conexidad tiene un significado relacionado con el hecho de no poder ``separar'' un conjunto en dos partes.
+El concepto de conexidad tiene un significado relacionado con el hecho de no poder ``separar'' un conjunto en dos partes. Los conceptos presentados acá están en el contexto de la topología estándar de los espacios euclidianos, pero la mayoría de estos se pueden generalizar de manera análoga a espacios topológicos más generales.
 
 \begin{defn}
 $A \subset \mathbb{R}^n$ se dice conexo cuando para cualquier pareja de abiertos disjuntos $U_1, U_2 \subset \mathbb{R}^n$ tales que $A \subset U_1 \cup U_2$, necesariamente uno de estos dos no intercepta a $A$.
@@ -60,5 +85,57 @@ El siguiente teorema es una caracterización bien conocida de los subconjuntos c
 \begin{them}
 Los únicos subconjuntos conexos de la recta son los intervalos.
 \end{them}
+
+La conexidad, así como la compacidad, es una propiedad preservada por aplicaciones continuas, en efecto
+
+\begin{them}
+Si $f: X \subset \mathbb{R}^n \to \mathbb{R}^m$ es continua y $X$ es conexo, entonces $f(X)$ es conexo.
+\end{them}
+
+\begin{proof}
+En efecto, si $U_1, U_2$ abiertos disjuntos de $f(X)$ unen al propio $f(X)$, por la continuidad de $f$, se tiene que $f^{-1}(U_1)$ y $f^{-1}(U_2)$ son abiertos de $X$, disjuntos y que unen a $X$, luego, por conexidad uno de los dos debe ser vacío, como consecuencia $U_1$ o $U_2$ es vacío.
+\end{proof}
+
+Juntando los dos teoremas anteriores se obtiene el teorema del valor intermedio para funciones reales de varias variables.
+
+\begin{them}
+
+Si $f: X \subset \mathbb{R}^n \to \mathbb{R}^m$ es continua y $y \in (f(x_1),f(x_2))$, entonces existe $x_3 \in X$ tal que $f(x_3) = y$.
+
+\end{them}
+
+El teorema anterior se prueba sin mucha dificultad teniendo en cuenta que por conexidad, la imagen de $f$ es un intervalo.
+
+Otra aplicación interesante es el conocido teorema de la aduana.
+
+\begin{them}
+
+Si un conjunto conexo $X \subset \mathbb{R}^n$ contiene un punto $a \in A$ y otro punto $b \notin A$, para otro conjunto arbitrario $A \subset \mathbb{R}^n$, entonces $X$ contiene algún punto de la frontera de $A$.
+
+\end{them}
+
+\begin{proof}
+
+Recordemos que la frontera de $A$, denotada por $\partial A$, se define como todos los puntos de $\mathbb{R}^n$ tales que toda bola centrada en ellos contiene puntos de $A$ y de su complemento, es decir, no son ni interiores ni exteriores.
+
+Ahora, supongamos que $a$ y $b$ no son puntos frontera de $A$, caso contrario ya se tiene el resultado. Luego, se tiene que $a \in \text{int}(A)$ y $b \in \text{ext}(A)$. De esta forma, $\text{int}(A) \cap X$ y $\text{ext}(A) \cap X$ son abiertos de $X$ no vacíos y disjuntos, luego, no pueden unir a $X$ pues esto contradice la conexidad de $X$. Entonces, existe un punto de $X$ que no está en ninguno de estos abiertos, es decir, es un punto frontera de $A$.
+\end{proof}
+
+Una pregunta natural es si la unión de conjuntos conexos es conexa. Intuitivamente se puede responder a esta pregunta negativamente, pues uno puede unir dos conexos disjuntos y el resultado evidentemente no será conexo. Sin embargo, la respuesta es afirmativa si no son disjuntos.
+
+\begin{them}
+
+Una unión arbitraria de conexos con un punto en común da como resultado un conjunto conexo.
+
+\end{them}
+
+\begin{proof}
+
+En efecto, sea $\{ A_{\alpha} \}_{\alpha \in \Lambda}$ una familia de conexos en un espacio euclidiano, indexada por algún conjunto $\Lambda$ y $p \in A_{\alpha}$, para todo $\alpha \in \Lambda$.
+
+Ahora, si $U_1, U_2$ son abiertos disjuntos de $A = \cup_{\alpha} A_{\alpha}$, que unen a $A$, entonces
+
+\end{proof}
+
 \end{section}
 \end{chapter}
