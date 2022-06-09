@@ -33,8 +33,24 @@ Sean $X$ y $Y$ E.T. Si $X$ es compacto y $f:X\to Y$ es una aplicación continua,
 \end{them}
 
 \begin{proof}
-Considérese $\{\mathcal{U}_\alpha\}$ un cubrimiento de abiertos para $f(X)$, i.e. que $f(X)\subseteq\bigcup\mathcal{U}_\alpha$, y por propiedades conjuntistas se tiene que esto último es equivalente a decir que $X\subseteq f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}(\mathcal{U}_\alpha)$, pero como $f$ es continua, devuelve abiertos en abiertos, por tanto $\{f^{-1}(\mathcal{U}_\alpha)\}$ es un cubrimiento de abiertos para $X$, y por la compacidad de tal conjunto, existe un conjunto $\left\lbrace f^{-1}(\mathcal{U}_{\alpha(i)}):i=1,\ldots,n\right\rbrace\subseteq\left\lbrace\mathcal{U}_\alpha\right\rbrace$ t.q. $X\subseteq\bigcup_{i=1}^nf^{-1}\left(\mathcal{U}_{\alpha(i)}\right)=f^{-1}\left(\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}\right)$, y esto último es equivalente a que $f(X)\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$.
+Si $\{\mathcal{U}_\alpha\}$ es un cubrimiento de abiertos para $f(X)$, entonces $f(X)\subseteq\bigcup\mathcal{U}_\alpha$, y por propiedades conjuntistas\footnote{Recordar de teoría de conjunto que dada la función $f:X\to Y$, la imagen directa de $A\subseteq X$ y la imagen inversa de $B\subseteq Y$ se definen respectivamente como:$$f(A):=\{y\in Y:\exists x\in A f(x)=y\}\text{ y }f^{-1}(B):=\{x\in X:f(x)\in B\}.$$ Además, $f(A)\subseteq B$ syss $A\subseteq f^{-1}(B)$. Finalmente, si $\{\mathcal{U}_\alpha\}\subseteq Y$, entonces $f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}\left(\mathcal{U}_\alpha\right)$.} se tiene que esto último es equivalente a decir que $X\subseteq f^{-1}\left(\bigcup\mathcal{U}_\alpha\right)=\bigcup f^{-1}(\mathcal{U}_\alpha)$, pero como $f$ es continua, devuelve abiertos en abiertos, por tanto $\{f^{-1}(\mathcal{U}_\alpha)\}$ es un cubrimiento de abiertos para $X$, y por la compacidad de tal conjunto, existe un subconjunto $\left\lbrace f^{-1}(\mathcal{U}_{\alpha(i)}):i=1,\ldots,n\right\rbrace\subseteq\left\lbrace f^{-1}\left(\mathcal{U}_\alpha\right)\right\rbrace$ t.q. $X\subseteq\bigcup_{i=1}^nf^{-1}\left(\mathcal{U}_{\alpha(i)}\right)=f^{-1}\left(\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}\right)$, y esto último es equivalente a que $f(X)\subseteq\bigcup_{i=1}^n\mathcal{U}_{\alpha(i)}$.
 \end{proof}
 
+\end{section}
+
+\begin{section}{Conexidad}
+
+El concepto de conexidad tiene un significado relacionado con el hecho de no poder "separar" un conjunto en dos partes.
+
+\begin{defn}
+$A \subset \mathbb{R}^n$ se dice conexo cuando para cualquier pareja de abiertos disjuntos $U_1, U_2 \subset \mathbb{R}^n$ tales que $A \subset U_1 \cup U_2$, necesariamente uno de estos dos no intercepta a $A$.
+\end{defn}
+Equivalentemente podríamos definir este concepto diciendo que una separación de un conjunto es una escogencia de dos abiertos de este conjunto, que son disjuntos y que unen al conjunto. Recuerde que un abierto de un conjunto es la intersección de un abierto en $\mathbb{R}^n$ con el mismo conjunto.
+
+El siguiente teorema es una caracterización bien conocida de los subconjuntos conexos de la recta (en la topología estándar).
+
+\begin{them}
+Los únicos subconjuntos conexos de la recta son los intervalos.
+\end{them}
 \end{section}
 \end{chapter}
