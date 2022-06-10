@@ -133,7 +133,30 @@ Una unión arbitraria de conexos con un punto en común da como resultado un con
 
 En efecto, sea $\{ A_{\alpha} \}_{\alpha \in \Lambda}$ una familia de conexos en un espacio euclidiano, indexada por algún conjunto $\Lambda$ y $p \in A_{\alpha}$, para todo $\alpha \in \Lambda$.
 
-Ahora, si $U_1, U_2$ son abiertos disjuntos de $A = \cup_{\alpha} A_{\alpha}$, que unen a $A$, entonces
+Ahora, si $U_1, U_2$ son abiertos disjuntos de $A = \cup_{\alpha} A_{\alpha}$, que unen a $A$, entonces, $p \in U_1$, sin pérdida de generalidad. Luego, $U_1 \cap A_{\alpha} \neq \emptyset$ es un abierto no vacío de $A_{\alpha}$, para todo $\alpha$. Si suponemos que $U_2 \neq \emptyset$, entonces para algún $q \in A_{\beta}$, se tiene que $q \in U_2$, luego, $U_1 \cap A_{\beta}, U_2 \cap A_{\beta}$ es una separación de $A_{\beta}$ en abiertos (de $A_{\beta}$) disjuntos no vacíos, lo cual representa una contradicción.
+
+\end{proof}
+
+Para más propiedades de los conjuntos conexos, consultar [poner referencias de elon y munkres].
+
+Vale la pena ahora mencionar otra caracteristica interesante, que es la conexidad por caminos. Un subconjunto $A \subset \mathbb{R}^n$ se dice conexo por caminos, cuando para cualquier par de puntos $p, q \in A$, existe una curva continua con trazo contenido en $A$ que los une. En otras palabras, existe $\gamma: [a,b] \to \mathbb{R}^n$ tal que $\gamma(a) = p$ y $\gamma(b) = q$, donde $\gamma$ es continua y $\gamma([a,b])\subset A$.
+
+Todo conjunto conexo por caminos es conexo. Lo anterior es un ejercicio interesante que involucra el teorema anterior. Sin embargo, y contrario a lo que se podría intuir normalmente, no todo conexo es conexo por caminos. El siguiente resultado muestra que lo anterior mencionado es un caso realmente un poco patológico.  
+
+\begin{them}
+
+Si $U \subset \mathbb{R}^n$ es abierto y conexo, entonces es conexo por caminos.
+
+\end{them}
+
+\begin{proof}
+
+Sea $p \in U$, considere el siguiente par de conjuntos. 
+$$U_1 = \{ q \in U: \text{Existe un camino continuo entre p y q} \}\,,$$
+$$U_2 =  \{ q \in U: \text{No existe un camino continuo entre p y q} \}\,.$$
+Note que ambos conjuntos son disjuntos, cubren $U$ y son abiertos, pues basta considerar una bola contenida en $U$ en torno de cada punto dentro de estos y usar el hecho de que las bolas son conexas y el hecho de que uno puede pegar dos caminos continuos con un punto en común para generar otro camino continuo.
+
+De esta forma, nos vemos forzados a concluir que alguno de estos dos conjuntos es vacío, caso contrario estaríamos contradiciendo la conexidad de $U$. El que es vacío es evidentemente $U_2$, de nuevo con un argumento similar considerando una bola centrada en $q$.
 
 \end{proof}
 
