@@ -370,6 +370,8 @@ Recordemos que la frontera de $A$, denotada por $\partial A$, se define como tod
 Ahora, supongamos que $a$ y $b$ no son puntos frontera de $A$, caso contrario ya se tiene el resultado. Luego, se tiene que $a \in \text{int}(A)$ y $b \in \text{ext}(A)$. De esta forma, $\text{int}(A) \cap X$ y $\text{ext}(A) \cap X$ son abiertos de $X$ no vacíos y disjuntos, luego, no pueden unir a $X$ pues esto contradice la conexidad de $X$. Entonces, existe un punto de $X$ que no está en ninguno de estos abiertos, es decir, es un punto frontera de $A$.
 \end{proof}
 
+Como consecuencia se puede observar un hecho que se puede intuir de forma natural sobre curvas continuas. Si $\gamma: I \to \R^n$ es una curva continua. Donde $I$ es un intervalo de la recta. Entonces suponer que para algún conjunto $A \subset \R^n$ se cumple que la curva toma algún valor en este conjunto y otro por fuera, implica que toma un valor sobre la frontera.
+
 Una pregunta natural es si la unión de conjuntos conexos es conexa. Intuitivamente se puede responder a esta pregunta negativamente, pues uno puede unir dos conexos disjuntos y el resultado evidentemente no será conexo. Sin embargo, la respuesta es afirmativa si no son disjuntos.
 
 \begin{them}
@@ -408,17 +410,58 @@ Note que ambos conjuntos son disjuntos, cubren $U$ y son abiertos, pues basta co
 De esta forma, nos vemos forzados a concluir que alguno de estos dos conjuntos es vacío, caso contrario estaríamos contradiciendo la conexidad de $U$. El que es vacío es evidentemente $U_2$, de nuevo con un argumento similar considerando una bola centrada en $q$.
 \end{proof}
 
+\begin{section}{Homeomorfismos}
+
+Los homeomorfismos son las aplicaciones que preservan en su totalidad la estructura de un espacio topológico. Dados $A\subset \R^n$ y $B \subset \R^m$ y una biyección $f:A \to B$, decimos que $f$ es un homeomorfismo cuando es una aplicación continua y su inversa en también continua. En este caso decimos adicionalmente que $A$ y $B$ son homeomorfos. Un teorema remarcable sobre homeomorfismos es el teorema de invarianza de dominio de Brower. La prueba de este teorema está bastante lejos del objetivo y de los contenidos de estas notas, por esta razón simplemente se enunciará una de sus consecuencias, debido a que es bastante importante en este contexto. 
+
+\begin{them}
+
+Si $n\neq m$, entonces $\R^n$ y $\R^m$ no pueden ser homeomorfos.
+
+\end{them}
+
+Una manera muy útil de saber cuando dos subconjuntos de algún espacio euclidiano no son homeomorfos, es analizando invariantes topológicos. Los invariantes topológicos son aquellas propiedades de estos conjuntos que necesariamente debe tener otro para poder ser homeomorfo a este. En las secciones anteriores hemos visto unos cuantos, por ejemplo, dado que la conexidad y la compacidad se envía a la imagen bajo una aplicación continua, podemos afirmar que si $A$ y $B$ son homeomorfos, entonces uno de los dos es conexo si y sólo si el otro lo es. Lo mismo ocurre con la compacidad.
+
+\begin{exmp}
+    El teorema de invarianza de dominio implica que dos bolas de espacios euclidianos de dimensión distinta no pueden ser homeomorfas. En efecto, una bola $B(a,r) \subset \R^n$ es homeomorfa al propio $\R^n$ (ejercicio). De esta forma se ve que si uno supone que dos bolas abiertas son homeomorfas, esto implica que sus espacios ambiente son también homeomorfos.
+\end{exmp}
+
+\begin{exmp}
+
+El circulo $\mathbb{S}^1$ no puede ser homeomorfo a ningún subconjunto de la recta. En efecto, puesto que el circulo es conexo (pues es imagen de un conjunto conexo bajo una aplicación continua), entonces si fuera homeomorfo a un subconjunto de la recta, este sería un intervalo. Digamos entonces que $\mathbb{S}^1 \cong I$. Si removemos un punto interior del intervalo $I$, nos queda entonces una unión de dos intervalos que deja de ser conexa, al remover la imagen en $\mathbb{S}^1$ de este punto, el conjunto resultante sigue siendo conexo, sin embargo, el supuesto homeomorfismo, si se restringe a estos dos nuevos conjuntos con un punto removido, sigue siendo un homeomorfismo, lo cual es una contradicción pues uno es conexo y el otro no.
+
+\end{exmp}
+
+
+\end{section}
+
 \end{section}
 
 \begin{section}{Ejercicios y problemas}
 
 \begin{enumerate}
     \item Demuestre que una aplicación continua $f: \mathbb{S}^1 \to \mathbb{R}$ debe mapear al menos dos puntos antípodales a un mismo valor. Esto es, existe $a \in \mathbb{S}^n$ tal que $f(a) = f(-a)$.
+    \item Demuestre que si $B(a,r) \subset \R^n$ es una bola abierta, entonces $B(a,r) \cong \R^n$. Donde el símbolos $\cong$ se una para denotar que dos espacios son homeomorfos.
     \item Demuestre que un cilindro infinito en $\mathbb{R}^3$ es homeomorfo al plano sin el origen.
+    \item Una aplicación $F: A \to B$ es llamada aplicación cociente cuando $Y \subset B$ es abierto si y sólo si $F^{-1}(Y)\subset X$ es abierto. Considere el siguiente diagrama
+    
+   
+    $$\begin{tikzpicture}[node distance=2cm, auto]
+    \node (V) {$V$};
+    \node (FAI) [right of= V] {$FAI(V)$};
+    \node (CL) [below of= FAI] {$CL(V,q)$};
+    \draw[->] (V) to (FAI);% corrected here
+    \draw[->] (FAI) to (CL);% here
+    \draw[->] (V) to (CL);% and here
+    \end{tikzpicture}$$
+
+    
     \item Un conjunto $A \subset \mathbb{R}^n$ es llamado convexo cuando para cualquier par de puntos $a, b \in A$ el segmento $[a,b] = \{ a + t(b-a): t \in [0,1] \}$ está contenido en $A$. Demuestre que las bolas definidas por cualquier norma son convexas.
+    \item Demuestre que la conexidad por caminos es un invariante topológico.
     \item Demuestre que el determinante $\det: \mathbb{R}^{n^2} \to \mathbb{R}$ es una función continua.
     \item Demuestre que $GL(n, \mathbb{R})$ es un abierto denso de $\mathbb{R}^n$.
-    \item Demuestre que cualquier esféra $S[a, r] \subset \mathbb{R}^n$ es conexa por caminos.
+    \item Demuestre que cualquier esféra $S[a, r] \subset \mathbb{R}^n$ es conexa por caminos. Concluya que todas las esféras son conexas.
+    \item Una aplicación $f:A \to B$ se dice abierta cuando la imagen de todo abierto en $A$ es abierto en $B$. Demuestre que si $f:X \to \mathbb{S}^n$ con $X$ compacto es abierta, entonces es sobreyectiva.
     \item La envolvente convexa de un conjunto $A \subset \mathbb{R}^n$ se define como la intersección de todos los convexos que contienen a $A$. Demuestre que la envolvente convexa de $A$ es igual al conjunto de todas las combinaciones lineales convexas de elementos de $A$, donde por combinación lineal convexa se entiende $\sum_{i=1}^k \alpha_i a_i$, $a_i \in A$, $\alpha_i \in [0,1]$ y $\sum \alpha_i = 1$. 
     \item Demuestre que para cualquier par de matrices $A, B \in \mathbb{R}^{n^2}$ se cumple $\det (I + AB) = \det (I + BA)$.
     \item Sea $f: \mathbb{R}^n \to \mathbb{R}$ con las siguientes dos propiedades. Para cualquier $a,b \in \mathbb{R}^2$ se cumple que la función $t \mapsto f(a + tv)$ es continua. Para cada compacto $K \subset \mathbb{R}^2$ se cumple que $f(K)$ es un compacto de la recta. Demuestre que $f$ es continua.

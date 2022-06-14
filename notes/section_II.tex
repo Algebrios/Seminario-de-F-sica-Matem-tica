@@ -232,10 +232,89 @@ Nótese entonces que $Df(\textbf{a}) \in \mathbb{M}_{m\times n}$. Además, se pu
 
 Esta matriz, se conoce también como el \textbf{Jacobiano} de $f$. La prueba del \cref{them:calcDerGen} se realiza de manera similar a la del Teorema \ref{them:CalcDerR}. Es importante hacer explícito que puede darse el caso en el que se pueda calcular el Jacobiano de una función en un punto en el que esta no es diferenciable (como se vio en \cref{exmp:diferencDerDir}). En los casos en los que la función sí es diferenciable, la derivada es el Jacobiano.
 
-Es natural entonces que la siguiente pregunta sea ¿Bajo qué condiciones se puede garantizar diferenciabilidad, sin recurrir a la definición?
+Es natural entonces que la siguiente pregunta sea ¿Bajo qué condiciones se puede garantizar diferenciabilidad, sin recurrir a la definición? Esta pregunta es la motivación del siguiente teorema...
 
-Continuar pag 7 notas
+\begin{them}
+\textbf{Condición suficiente de diferenciabilidad}: Sea $A \subset \R^m$, un abierto, y sea $f: A \longrightarrow\R^n$. Si $f_i \in C^1$, entonces $f$ es diferenciable en A.
+
+Por claridad, note que decir que $f_i \in C^1$ es equivalente a decir que $\forall_{\textbf{a}\in A} \; \exists \, D_jf_i(\textbf{a})$, y que $D_jf_i$ es continua en $A$.
+
+La definición del teorema es larga y técnica. No veo necesario verla en detalle en este seminario. A continuación presento una intuición.
+\end{them}
+
+\begin{proof}
+De nuevo, esto es un esbozo intuitivo de la demostración, no algo formal...
+
+En la definición de diferenciabilidad, la resta de la variación de la función, $f(\textbf{a}+\textbf{h}) - f(\textbf{a})$, se puede descomponer en algo similar a una "suma telescópica", si definimos los puntos
+
+\begin{equation*}
+    \begin{array}{l}
+         \textbf{p}_0 = \textbf{a}, \\
+         \textbf{p}_1 = \textbf{p}_0 + h_1 \textbf{e}_1 = \textbf{a} + h_1 \textbf{e}_1, \\
+         \textbf{p}_2 = \textbf{p}_1 + h_2 \textbf{e}_2 = \textbf{a} + h_1 \textbf{e}_1+ h_2 \textbf{e}_2, \\
+         \cdots \\
+         \textbf{p}_{k} = \textbf{p}_{k-1} + h_{k} \textbf{e}_{k}
+    \end{array}
+\end{equation*}
+
+Donde $\textbf{h}=(\leftarrow h_k \rightarrow)_{k=1,...,m.}$. Entonces se llega a que:
+
+\begin{equation*}
+    f(\textbf{a}+\textbf{h}) - f(\textbf{a}) = \sum_{j=1}^{m} [f(\textbf{p}_j) - f(\textbf{p}_{j-1})]
+\end{equation*}
+
+Además, por hipótesis se tiene que $f_i$ es continuamente diferenciable en cada derivada parcial, por lo que se puede utilizar el teorema del valor medio\footnote{Más adelante se presenta una versión más general de este teorema (Ver Teorema \ref{them:ValMedio}), en caso de necesitar recordarlo.}, conocido del cálculo ordinario, para encontrar una expresión equivalente para cada uno de los desplazamientos $f(\textbf{p}_j) - f(p_{j-1})$, de tal forma que
+
+\begin{equation*}
+    f(\textbf{a}+\textbf{h}) - f(\textbf{a}) = \sum_{j=1}^{m} D_jf(\textbf{q}_j) h_j
+\end{equation*}
+
+donde $\textbf{q}_j$ es un punto en el tramo j entre $\textbf{p}_j-1$ y $\textbf{j}_j$. Con esta expresión ya se puede llegar al cumplimiento de la definición de diferenciabilidad. Veamos...
+
+\begin{equation*}
+    B = (\leftarrow D_jf(\textbf{a}) \rightarrow) \Longrightarrow B\cdot h = \sum_{j=1}^{m} D_jf(\textbf{a})h_j
+\end{equation*}
+
+\begin{equation*}
+    \Longrightarrow \frac{f(\textbf{a}+\textbf{h})-f(\textbf{a})-B\cdot \textbf{h}}{|\textbf{h}|} = \sum_{j=1}^{m} \frac{[D_jf(\textbf{q}_j)-D_jf(\textbf{a})]h_j}{|\textbf{h}|}
+\end{equation*}
+
+De ahí se nota que al evaluar el límite $\textbf{h} \rightarrow \textbf{0}$, $|h_j/|\textbf{h}|| <1$ está acotado, y que como $\textbf{q}_j\rightarrow\textbf{a}$ entonces $[D_jf(\textbf{q}_j) - D_jf(\textbf{a})] \rightarrow \textbf{0}$, por lo que se recupera que 
+
+\begin{equation*}
+    \lim_{\textbf{h}\rightarrow\textbf{0}_m}\frac{f(\textbf{a}+\textbf{h})-f(\textbf{a})-B\cdot \textbf{h}}{|\textbf{h}|} = \textbf{0}_n
+\end{equation*}
+
+\end{proof}
+
+\begin{them}
+Teorema 6
+\end{them}
+
+%% motivacion futura
+\begin{rem}
+\textbf{Motivación para lo que sigue}
+\end{rem}
 
 \end{section}
+
+\begin{section}{Regla de la cadena}
+
+\begin{them}
+\textbf{Regla de la cadena}:
+\end{them}
+
+\begin{coll}
+
+\end{coll}
+
+\begin{them}
+\label{them:ValMedio}
+\textbf{Del valor medio}
+\end{them}
+
+
+\end{section}
+
 
 \end{chapter}
