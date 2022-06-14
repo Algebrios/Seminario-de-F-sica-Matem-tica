@@ -1,0 +1,241 @@
+\begin{chapter}{Cálculo diferencial en $\mathbb{R}^n$}
+
+En esta sección se estudian conceptos relacionados a la diferenciabilidad, en el contexto de aplicaciones entre $\mathbb{R}^m \longrightarrow \mathbb{R}^n$, así como las definiciones previas necesarias para llegar a ese punto. El contenido del inicio de esta sección está principalmente basado en el capítulo 2 del libro de Análisis en Variedades de Munkres \cite{munkres1991analysis}, con algo de influencia de \cite{Nakahara2003GTP}.
+
+\begin{section}{Diferenciabilidad}
+
+Es conveniente comenzar a construir las definiciones de diferenciabilidad desde funciones reales, con las que ya hay familiaridad, para determinar (y tener como motivación), qué propiedades queremos que una definición más general de derivación preserve.
+
+\begin{defn}
+\label{def:derivadaR}
+
+\textbf{Derivada en $\mathbb{R}$.} Sea $\phi: \mathbb{R} \supseteq A \longrightarrow \mathbb{R}$, función real, tal que para $a \in A$ $\exists_r \, | \, B(a, r) \subset A$, se define la derivada como:
+
+\begin{equation}
+    \phi'(a) = \lim_{t \rightarrow 0} \frac{\phi(a+t)-\phi(a)}{t}
+\end{equation}
+
+Si el límite existe, se dice que $\phi$ es diferenciable en $a$.
+
+\end{defn}
+
+Esta definición de derivada tiene dos consecuencias importantes:
+
+\begin{enumerate}
+    \item Si $\phi: \mathbb{R} \supseteq A \longrightarrow \mathbb{R}$ es diferenciable en $a \in A$, entonces es continua en $a$.
+    \item Si dos funciones, $\phi: \mathbb{R} \supseteq A \longrightarrow \mathbb{R}$, $\psi: \mathbb{R} \supseteq \phi(A) \longrightarrow \mathbb{R}$ son diferenciables en $a \in A$ y $\phi(a)$, respectivamente, entonces $\psi \circ \phi$ es diferenciable en $a$.
+\end{enumerate}
+
+La prueba de estas dos consecuencias no es complicada\footnote{Se puede encontrar la prueba en \cite{munkres1991analysis}}, pero de acuerdo al propósito del seminario, no es muy provechoso hacerla. La importancia de estas dos consecuencias en la construcción de una definición más generalizada de diferenciabilidad es muy grande. Como definición tentativa para la generalización de la derivada, se podría considerar a la derivada direccional.
+
+\begin{defn}
+\label{def:derivadaDirec}
+\textbf{Derivada direccional.} Sea $f: \mathbb{R}^m \supseteq A \longrightarrow \mathbb{R}^n$, tal que para $\textbf{a} \in A$, $\exists_{r \in \mathbb{R}} \, | \, B(a,r)\subset A$, se define para $\textbf{u} \in \mathbb{R}^m$, $\textbf{u} \neq \textbf{0}$ la derivada direccional, como 
+
+\begin{equation}
+    f'(\textbf{a},\textbf{u}) = \lim_{t \rightarrow 0} \frac{f(\textbf{a}+t\textbf{u}) - f(\textbf{a})}{t}
+\end{equation}
+\end{defn}
+
+La definición anterior de derivada no bastaría como definición general, porque existen casos en los que se puede tener derivada en un punto, sin tener continuidad. Un ejemplo de esto se mostrará más adelante, al terminar estas definiciones familiares. Con el propósito de definir un concepto más general de diferenciabilidad, es conveniente entonces modificar un poco la definición \ref{def:derivadaR}, de derivada de un punto, a una de diferenciabilidad en un punto:
+
+\begin{defn}
+\textbf{Diferenciabilidad en $\mathbb{R}$.} Sea $\phi: \mathbb{R} \supseteq A \longrightarrow \mathbb{R}$, función real, tal que para $a \in A$ $\exists_r \, | \, B(a, r) \subset A$, se dice que $\phi$ es diferenciable en $a$, si existe $\lambda$, tal que:
+
+\begin{equation}
+    \frac{\phi(a + t)-\phi(a)-\lambda t}{t}\rightarrow 0 \text{ cuando } t \rightarrow 0
+\end{equation}
+
+Más aún, se dice que $\lambda = \phi'(a)$, es la derivada.
+\end{defn}
+
+En esta definición, en cierto sentido se está encontrando una aproximación lineal local, dada por la función $\lambda t$, en el punto $a$. Esa esencia se preserva en una generalización del concepto de diferenciabilidad, como se muestra a continuación.
+
+\begin{defn}
+\label{def:DiferenGeneral}
+\textbf{Diferenciabilidad.} Sea $f:\mathbb{R}^m\supseteq A \longrightarrow \mathbb{R}^n$, aplicación, y sea $\textbf{a} \in A$, tal que $\exists_{r\in\mathbb{R}}\,|\, B(\textbf{a},r)\subset A$. Se dice que $f$ es diferenciable en $\textbf{a}$, si existe una matriz $B \in \mathbb{M}_{n\times m}$, tal que:
+
+\begin{equation}
+\label{eq:diferenGeneral}
+    \frac{f(\textbf{a}+\textbf{h})-f(\textbf{a}) - B \cdot \textbf{h}}{|\textbf{h}|} \rightarrow \textbf{0}_n \text{ cuando } \textbf{h} \rightarrow \textbf{0}_m
+\end{equation}
+
+Se dice que la aplicación lineal $B$ es la derivada de $f$ en $\textbf{a}$.
+\end{defn}
+
+Como nota importante, veamos que \textbf{B es única}...
+
+\begin{proof}
+
+Suponga que $B$ y $C$ son ambas derivadas de $f$ en $\textbf{a}$. Restando la condición de diferenciabilidad (ecuación \ref{eq:diferenGeneral}) de ambas derivadas, se llega a que
+
+\begin{equation*}
+    \frac{(C-B)\cdot \textbf{h}}{|\textbf{h}|} \rightarrow \textbf{0} \text{ cuando } \textbf{h} \rightarrow \textbf{0}
+\end{equation*}
+
+Al considerar que $\textbf{h}$ puede tomar valores arbitrarios, escójase en particular que $\textbf{h} = t \textbf{u}$, con un $\textbf{u}$ cualquiera. Entonces
+
+\begin{equation*}
+    {(C-B)\cdot \textbf{u}} \rightarrow \textbf{0}
+\end{equation*}
+
+De lo que se concluye que $C=B$
+\end{proof}
+
+Se puede verificar que para la Definición \ref{def:DiferenGeneral}, generalización de la diferenciabilidad a aplicaciones $\mathbb{R}^m \longrightarrow \mathbb{R}^n$, se cumplen las dos condiciones cuya importancia se resaltó al definir la diferenciabilidad usual en $\mathbb{R}$, en adición a una tercera:
+
+\begin{enumerate}
+    \item \textbf{Diferenciabilidad} $\implies$ \textbf{Continuidad}: Si $f: \mathbb{R}^m \supseteq A \longrightarrow \mathbb{R}^n$ es diferenciable en $\textbf{a} \in A$, entonces es continua en $\textbf{a}$. Ver \cref{them:DiferenContinui}.
+    \item \textbf{Diferenciabilidad y composición}: Si dos funciones, $\phi: \mathbb{R}^m \supseteq A \longrightarrow \mathbb{R}^n$, $\psi: \mathbb{R}^n \supseteq \phi(A) \longrightarrow \mathbb{R}^p$ son diferenciables en $\textbf{a} \in A$ y ${\phi}(\textbf{a})$, respectivamente, entonces $\psi \circ \phi$ es diferenciable en $\textbf{a}$.
+    \item \textbf{Diferenciabilidad y derivada direccional}: Sea $f: \mathbb{R}^m \supseteq A \longrightarrow \mathbb{R}^n$, si $f$ es diferenciable en $\textbf{a} \in A$, con derivada $B$, entonces existen todas las derivadas direccionales en $\textbf{a}$.
+\end{enumerate}
+
+Clarifiquemos los conceptos anteriores con un ejemplo. Este ejemplo es basado en el ejemplo 3 de la sección 2 de \cite{munkres1991analysis}.
+
+\begin{exmp}
+\label{exmp:diferencDerDir}
+Sea $f: \mathbb{R}^2 \longrightarrow \mathbb{R}$, tal que
+
+\begin{equation*}
+    f(x,y) = \left\{\begin{array}{lcc}
+        0 & si & x=y=0  \\
+        \frac{x^2y}{x^4+y^2} & si & (x,y) \neq \textbf{0} 
+    \end{array}\right.
+\end{equation*}
+
+Nótese primero, motivado por la intuición, que f tiene potencias de orden 3 en el numerador y de orden 4 en el denominador, por lo que se esperaría de entrada que la función no sea continua en $\textbf{0}$, y por lo tanto, no fuera diferenciable en 0.
+
+Tomemos para ejemplificar la función evaluada en las curvas $x=0$ y $y=0$. La forma funcional de $f$ evaluada en estas curvas sería $f(x,0) = f(0,y) = 0$, en donde hay continuidad y diferenciabilidad. Es decir, para los vectores base, existe la derivada direccional. Consideremos otra curva paramétrica, $(t,t^2)$. Evaluando $f$ sobre esta curva se obtiene que
+
+\begin{equation*}
+    f(t,t^2) = \left\{\begin{array}{lcc}
+        0 & si & x=y=0  \\
+        \frac{1}{2} & si & (x,y) \neq \textbf{0} 
+    \end{array}\right.
+\end{equation*}
+
+Se evidencia la discontinuidad de $f$ en $\textbf{0}$. Se mostró que existen derivadas direccionales de $f$ en $\textbf{0}$, a pesar de que la función no fuera diferenciable en ese mismo punto.
+
+Más aún, utilizando la Definición \ref{def:derivadaDirec}, de derivada direccional, se puede mostrar la existencia de todas las derivadas direccionales, y encontrar su valor.
+
+\end{exmp}
+
+La última definición de diferenciabilidad sólo habla de existencia. Para computar las derivadas de la forma usual, sin recurrir a la definición, es necesario introducir un par de teoremas primero. Veamos.
+
+\begin{them}
+\label{them:DerivYDerivDirec}
+\textbf{Derivada y derivada direccional}: Sea $f:\mathbb{R}^m\supseteq A \longrightarrow \mathbb{R}^n$, aplicación diferenciable en $\textbf{a} \in A$, y sea $\textbf{u} \in A$,
+
+\begin{equation*}
+f'(\textbf{a}, \textbf{u}) = Df(\textbf{a})\cdot\textbf{u}
+\end{equation*}
+
+La prueba de este teorema es sencilla usando \cref{def:derivadaDirec,def:DiferenGeneral}.
+\end{them}
+
+\begin{them}
+\label{them:DiferenContinui}
+\textbf{Diferenciabilidad $\implies$ continuidad}:  Si $f: \R^m \supseteq A \longrightarrow \R^n$ es diferenciable en $\textbf{a} \in A$, entonces es continua en $\textbf{a}$.
+\end{them}
+
+\begin{proof}
+Sea $B=Df(\textbf{a})$. Sea $\textbf{h} \longrightarrow \textbf{0}$, véase que
+
+\begin{equation*}
+    \lim_{\textbf{h}\rightarrow\textbf{0}} \left[ f(\textbf{a}+\textbf{h}) - f(\textbf{a}) \right]= \lim_{\textbf{h}\rightarrow\textbf{0}} \left\{ |\textbf{h}| \left[ \frac{f(\textbf{a}+\textbf{h}) - f(\textbf{a}) - B \cdot \textbf{h}}{|\textbf{h}|} \right]\right\} + B\cdot \lim_{\textbf{h}\rightarrow\textbf{0}} \textbf{h}
+\end{equation*}
+
+El primer término de la derecha tiende a cero, porque $f$ es diferenciable en $\textbf{a}$, y es evidente que el segundo término también tiende a cero. Por lo tanto se concluye que
+
+\begin{equation*}
+    \lim_{\textbf{h}\rightarrow\textbf{0}} \left[ f(\textbf{a}+\textbf{h}) - f(\textbf{a}) \right]=\textbf{0}
+\end{equation*}
+
+Es decir, $\textbf{f}$ es continua en $\textbf{a}$.
+
+\end{proof}
+
+Como paso intermedio, es de utilidad definir la derivada parcial, como armazón de lo que será la derivada general.
+
+\begin{defn}
+\label{def:DerivParcial}
+\textbf{Derivada parcial}: Sea $f: \R^m \supseteq A \longrightarrow \R$, se define la j-derivada parcial en el punto $\textbf{a}$, denotada $D_jf(\textbf{a})$, como la derivada direccional en dirección del vector base j, $\textbf{e}_j$.
+
+\begin{equation*}
+    D_jf(\textbf{a}) = f'(\textbf{a},\textbf{e}_j) = \lim_{t\rightarrow0}\frac{f(\textbf{a}+t\textbf{e}_j) - f(\textbf{a})}{t}
+\end{equation*}
+\end{defn}
+
+Esta es la definición usual, y los métodos de cálculo son los mismos que en el cálculo ordinario. Ahora sí, veamos un caso de cálculo de derivada en términos de esta derivada parcial, a través del siguiente teorema...
+
+\begin{them}
+\label{them:CalcDerR}
+\textbf{Cálculo de la derivada en codominio $\R$}: Sea $f: \R^m \supseteq A \longrightarrow \R$ diferenciable en $\textbf{a} \in A$, la derivada de $f$ se calcula como:
+
+\begin{equation}
+    Df(\textbf{a}) = \left( \leftarrow D_jf(\textbf{a}) \rightarrow \right)\text{, }\, j=1,...,m.
+\end{equation}
+
+Donde se introdujo notación para expresar las matrices mediante secuencias, en bloques. Lo anterior es equivalente a:
+
+\begin{equation*}
+    \left( D_1f(\textbf{a}) \cdots D_jf(\textbf{a}) \cdots D_mf(\textbf{a}) \right) = \left( \leftarrow D_jf(\textbf{a}) \rightarrow \right)\text{, }\, j=1,...,m.
+\end{equation*}
+\end{them}
+
+\begin{proof}
+Como $f$ es diferenciable, se tiene que existe $\{\lambda_j\}_{j=1,...,m.}$, tal que la derivada es $Df(\textbf{a})=(\leftarrow \lambda_j \rightarrow)$. Veamos entonces:
+
+\begin{equation*}
+    D_jf(\textbf{a}) = f'(\textbf{a},\textbf{e}_j) = Df(\textbf{a})\cdot \textbf{e}_j = \lambda_j
+\end{equation*}
+
+En la primera igualdad, se usó \cref{def:DerivParcial}, en la segunda igualdad \cref{them:DerivYDerivDirec}, y en la tercera igualdad se usó la hipótesis de la demostración.
+
+\end{proof}
+
+Finalmente, para el cálculo de la derivada en el caso general, se utiliza este resultado en la construcción. Veamos.
+
+\begin{them}
+\label{them:calcDerGen}
+\textbf{Cálculo de la derivada en codominio $\R^n$}: Sea $f: \R^m \supseteq A \longrightarrow \R^n$, y $\exists_r | B_m(\textbf{a},r) \subset A$. Sean las componentes de $f$ en el codominio $\{f_i\}_{i=1,...,n.}$, tales que
+
+\begin{equation*}
+    f(\textbf{a}) = \left(\begin{array}{c}
+         \uparrow \\
+         f_i(\textbf{a}) \\
+         \downarrow
+    \end{array}\right)
+\end{equation*}
+
+Se tiene que
+
+\begin{itemize}
+    \item $f$ es diferenciable en $\textbf{a}$ sii $\{f_i\}$ es diferenciable en $\textbf{a}$.
+    \item Si $f$ es diferenciable en $\textbf{a}$, se tiene que
+    \begin{equation}
+        Df(\textbf{a}) = \left( \begin{array}{c}
+             \uparrow\\
+             Df_i(\textbf{a}) \\
+             \downarrow
+        \end{array} \right)
+    \end{equation}
+\end{itemize}
+
+\end{them}
+
+Nótese entonces que $Df(\textbf{a}) \in \mathbb{M}_{m\times n}$. Además, se puede escribir equivalentemente que 
+
+\begin{equation*}
+    (Df(\textbf{a}))_{ij} = D_jf_i(\textbf{a})
+\end{equation*}
+
+Esta matriz, se conoce también como el \textbf{Jacobiano} de $f$. La prueba del \cref{them:calcDerGen} se realiza de manera similar a la del Teorema \ref{them:CalcDerR}. Es importante hacer explícito que puede darse el caso en el que se pueda calcular el Jacobiano de una función en un punto en el que esta no es diferenciable (como se vio en \cref{exmp:diferencDerDir}). En los casos en los que la función sí es diferenciable, la derivada es el Jacobiano.
+
+Es natural entonces que la siguiente pregunta sea ¿Bajo qué condiciones se puede garantizar diferenciabilidad, sin recurrir a la definición?
+
+Continuar pag 7 notas
+
+\end{section}
+
+\end{chapter}

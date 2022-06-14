@@ -59,16 +59,19 @@
 \newtheorem{thm}{Theorem}[section]
 
 \theoremstyle{definition}
-\newtheorem{defn}[thm]{Definición}
-\newtheorem{notn}[thm]{Notación}
-\newtheorem{exmp}[thm]{Ejemplo}
-\newtheorem{exmps}[thm]{Ejemplos}
-\newtheorem{rem}[thm]{Observacion}
-\newtheorem{prop}[thm]{Proposición}
-\newtheorem{lema}[thm]{Lema}
-\newtheorem{them}[thm]{Teorema}
-\newtheorem{coll}[thm]{Corolario}
-\newtheorem{const}[thm]{Construcción}
+\newtheorem{defn}{Definición}
+\newtheorem{notn}{Notación}
+\newtheorem{exmp}{Ejemplo}
+\newtheorem{exer}{Ejercicio}
+\AtEndEnvironment{exmp}{\null\hfill$\square$}
+\newtheorem{exmps}{Ejemplos}
+\AtEndEnvironment{exmps}{\null\hfill$\square$}
+\newtheorem{rem}{Observacion}
+\newtheorem{prop}{Proposición}
+\newtheorem{lema}{Lema}
+\newtheorem{them}{Teorema}
+\newtheorem{coll}{Corolario}
+\newtheorem{const}{Construcción}
 
 % abreviaciones para ahorrar escritura
 \newcommand{\E}{\mathscr{E}}
@@ -86,7 +89,7 @@
 
 
 % se elimina sangria francesa
-\setlength\parindent{0pt}
+% \setlength\parindent{0pt}
 
 % bibliografia
 \usepackage[backend=biber,style=alphabetic,sorting=nyt]{biblatex}
